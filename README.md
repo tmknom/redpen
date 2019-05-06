@@ -7,7 +7,9 @@
 [![MicroBadger Layers](https://img.shields.io/microbadger/layers/tmknom/redpen.svg)](https://microbadger.com/images/tmknom/redpen)
 [![License](https://img.shields.io/github/license/tmknom/redpen.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Dockerfile template.
+A proofreading tool.
+
+This is [RedPen](https://github.com/redpen-cc/redpen) wrapper.
 
 ## Requirements
 
@@ -15,9 +17,22 @@ Dockerfile template.
 
 ## Usage
 
+### Proofread markdown
+
+ ```sh
+docker run --rm -v $PWD:/work tmknom/redpen --format markdown --lang en **/*.md
+```
+
+### Proofread review
+
+ ```sh
+docker run --rm -v $PWD:/work tmknom/redpen --format review --lang ja **/*.re
+```
+
+### Help
+
 ```sh
-curl -fsSL https://raw.githubusercontent.com/tmknom/redpen/master/install | sh -s example
-cd example
+docker run --rm tmknom/redpen --help
 ```
 
 ## Makefile targets
