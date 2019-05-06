@@ -26,6 +26,8 @@ RUN set -x && \
     rm -rf redpen-distribution-${MODULE_VERSION} && \
     rm -rf bin/redpen-* sample-doc/
 
+COPY logback.xml /opt/redpen/conf/logback.xml
+
 WORKDIR /work
 ENTRYPOINT ["/opt/redpen/bin/redpen"]
 CMD ["--help"]
