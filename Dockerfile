@@ -23,7 +23,8 @@ SHELL ["/bin/ash", "-o", "pipefail", "-c"]
 RUN set -x && \
     wget -q https://github.com/redpen-cc/redpen/releases/download/redpen-${MODULE_VERSION}/redpen-${MODULE_VERSION}.tar.gz -O - | tar xz && \
     cp -av redpen-distribution-${MODULE_VERSION}/* /opt/redpen && \
-    rm -rf redpen-distribution-${MODULE_VERSION}
+    rm -rf redpen-distribution-${MODULE_VERSION} && \
+    rm -rf bin/redpen-* sample-doc/
 
 WORKDIR /work
 ENTRYPOINT ["/opt/redpen/bin/redpen"]
