@@ -18,16 +18,16 @@ LABEL org.label-schema.vendor="tmknom" \
 
 ARG MODULE_VERSION=1.10.1
 
-WORKDIR /opt/redpen
+WORKDIR /usr/local
 SHELL ["/bin/ash", "-o", "pipefail", "-c"]
 RUN set -x && \
     wget -q https://github.com/redpen-cc/redpen/releases/download/redpen-${MODULE_VERSION}/redpen-${MODULE_VERSION}.tar.gz -O - | tar xz && \
-    cp -av redpen-distribution-${MODULE_VERSION}/* /opt/redpen && \
+    cp -av redpen-distribution-${MODULE_VERSION}/* /usr/local && \
     rm -rf redpen-distribution-${MODULE_VERSION} && \
     rm -rf bin/redpen-* sample-doc/
 
-COPY logback.xml /opt/redpen/conf/logback.xml
+COPY logback.xml /usr/local/conf/logback.xml
 
 WORKDIR /work
-ENTRYPOINT ["/opt/redpen/bin/redpen"]
+ENTRYPOINT ["/usr/local/bin/redpen"]
 CMD ["--help"]
